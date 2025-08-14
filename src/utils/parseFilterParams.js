@@ -21,7 +21,7 @@ const parseIsFavourite = (isFavourite) => {
 const parseType = (contactType) => {
   const isString = typeof contactType === 'string';
   if (!isString) return;
-  const isType = (type) => ['home', 'personal'].includes(type);
+  const isType = (type) => ['work', 'home', 'personal'].includes(type);
 
   if (isType(contactType)) return contactType;
 };
