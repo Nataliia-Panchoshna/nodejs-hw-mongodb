@@ -8,7 +8,8 @@ export const getAllContacts = async ({
   sortOrder = SORT_ORDER.ASC,
   sortBy = '_id',
   filter = {},
-}) => {
+} = {}) => {
+  // ← додали = {} щоб уникнути undefined
   const limit = perPage;
   const skip = (page - 1) * perPage;
 
@@ -46,6 +47,7 @@ export const getAllContacts = async ({
     ...paginationData,
   };
 };
+
 export const getContactById = async (contactId) => {
   const contact = await ContactsCollection.findById(contactId);
   return contact;

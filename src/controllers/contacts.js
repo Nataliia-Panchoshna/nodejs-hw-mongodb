@@ -8,7 +8,12 @@ import {
 } from '../services/contacts.js';
 
 export const getContactsController = async (req, res, next) => {
-  const contacts = await getAllContacts();
+  const { page = 1, limit = 10 } = req.query;
+
+  const contacts = await getAllContacts({
+    page: Number(page),
+    limit: Number(limit),
+  });
 
   if (!contacts) {
     throw createHttpError(404, 'Contact not found');
